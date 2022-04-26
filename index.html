@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Transition</title>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+
+    /* Position of both containers */
+    .Container, .Container1 , .Container2{
+        position: relative;
+        float:left;
+        width: 400px;
+        height:400px;
+        margin: 50px;
+    }
+
+    /* Images position */
+    .front-content{
+        position:absolute;
+        width: 100%;
+        height:100%;
+        top:0;
+        left:0;
+        transition: all 0.5s ease ;
+    }
+
+    /* Images sizing */
+    .front-content img{
+        width:100%;
+        height:100%;
+    }
+
+    /* Gradient and text */
+    .backContainer{
+        position:absolute;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        text-align: center;
+        border: 5px solid  black;
+        background:linear-gradient(to bottom right,red,yellow);
+        box-sizing: border-box;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        z-index:-2; 
+    }
+
+    /* Text padding */
+    .back-content{
+        padding:0 60px;
+
+    }
+
+    /* First transition */
+    .Container .back-content{
+        transform: scale(0);
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+    .Container:hover .front-content{
+        width: 100px;
+        height: 100px;
+        left: 350px;
+        top:150px;  
+    }
+
+    .Container:hover .front-content img {
+        border-radius: 50px;
+        box-shadow: 0 0 0 5px #fff;
+    }
+
+    .Container:hover .back-content{
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .heading{
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .description{
+        margin:20px 0;
+    }
+
+    /* Second transition */
+    .Container1 .back-content {
+        opacity: 0;
+        transform:translateY(100px);
+        transition:all 1s ease;
+    }
+
+    .Container1:hover .back-content {
+        opacity: 1;
+        transform:translateY(0px);
+    }
+
+    .Container1:hover .front-content {
+        opacity: 0;
+        top: -100%;
+    } 
+
+    .Container1 .backContainer:before {
+        position: absolute;
+        content: '';
+        top: 200px;
+        bottom: 200px;
+        right: 50px;
+        left: 50px;
+        border-right: 2px solid #fff;
+        border-left: 2px solid #fff;
+        transition:all 1s ease;
+    }
+
+    .Container1 .backContainer:after {
+        position: absolute;
+        content: '';
+        top: 50px;
+        bottom: 50px;
+        right: 200px;
+        left: 200px;
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transition:all 1s ease;
+    }
+
+    .Container1:hover .backContainer:before {
+        top: 30px;
+        bottom: 30px;
+    }
+
+    .Container1:hover .backContainer:after {
+        right: 30px;
+        left: 30px;
+    }
+</style>
+</head>
+<body>
+    <!-- First transition -->
+    <div class="Container">
+        <div class="front-content">
+            <img src="images/girl.jpg" alt="stylish girl"/>
+        </div>
+
+        <div class="backContainer">
+            <div class="back-content">
+                <div class="heading">
+                    Stylish Girl
+                </div>
+                <div class="description">
+                    There are many variations of passages of Lorem Ipsum available
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second transition -->
+    <div class="Container1">
+        <div class="front-content">
+            <img src="images/butterfly.jpg" alt=" image 2">
+        </div>
+        <div class="backContainer">
+            <div class="back-content">
+                <div class="heading">Stylish Girl</div>
+                <div class="description">There are many variations of passages of Lorem Ipsum available</div>
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>
